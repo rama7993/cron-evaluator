@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.col {
+  flex: 1;
+}
+
+.grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.item {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.item strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.item em {
+  font-style: normal;
+  color: var(--success);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.error {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--error);
+}
+
+.item.invalid {
+  border-color: var(--error);
+  background: #fee2e2;
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 11px;
+}

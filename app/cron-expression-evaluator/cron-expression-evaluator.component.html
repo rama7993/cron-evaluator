@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="row">
+    <div class="col">
+      <label for="cronInput">Cron Expression (6 fields)</label>
+      <input
+        id="cronInput"
+        type="text"
+        [ngModel]="cronExpression"
+        (ngModelChange)="onCronChange($event)"
+        placeholder="0 15 12 1 JAN MON"
+      />
+      <div class="help">
+        Format: <code>sec min hr day month dow</code>. Supports names like
+        <code>JAN</code>, <code>MON</code>, ranges and steps.
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <h4>Parsed Fields</h4>
+  <div class="grid">
+    <div
+      class="item"
+      *ngFor="let field of cronFieldList"
+      [class.invalid]="fieldErrors[field.key]"
+    >
+      <span>{{ field.label }}</span>
+      <strong>{{ cronFields[field.key] }}</strong>
+      <em *ngIf="activeFields[field.key] && !fieldErrors[field.key]"
+        >(active)</em
+      >
+      <small class="field-error" *ngIf="fieldErrors[field.key]">
+        Invalid {{ field.label }}
+      </small>
+    </div>
+  </div>
+
+  <div
+    class="error"
+    *ngIf="!isValid && cronExpression.trim().length && !hasPartialErrors"
+  >
+    Please enter exactly 6 space-separated fields.
+  </div>
+</div>

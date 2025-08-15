@@ -1,0 +1,33 @@
+.panel {
+  margin-top: 12px;
+}
+.row {
+  display: flex;
+  gap: 16px;
+}
+.col {
+  flex: 1;
+}
+.weekday-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px 12px;
+  margin-bottom: 10px;
+}
+.day-item {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+.summary {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}

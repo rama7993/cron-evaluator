@@ -1,0 +1,57 @@
+<div class="card">
+  <label for="pattern">Recurrence Pattern</label>
+  <select
+    id="pattern"
+    [(ngModel)]="pattern"
+    (change)="onPatternChange(pattern)"
+  >
+    <option *ngFor="let p of patterns">{{ p }}</option>
+  </select>
+
+  <!-- Daily -->
+  <div *ngIf="pattern === 'Daily'" class="panel">
+    <div class="row">
+      <div class="col">
+        <label for="dailyTime">Time</label>
+        <input id="dailyTime" type="time" [(ngModel)]="dailyTime" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Weekly -->
+  <div *ngIf="pattern === 'Weekly'" class="panel">
+    <div class="weekday-list">
+      <label *ngFor="let d of weekdays" class="day-item">
+        <input type="checkbox" [(ngModel)]="selectedWeekdays[d]" /> {{ d }}
+      </label>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="weeklyTime">Time</label>
+        <input id="weeklyTime" type="time" [(ngModel)]="weeklyTime" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly -->
+  <div *ngIf="pattern === 'Monthly'" class="panel">
+    <div class="row">
+      <div class="col">
+        <label for="monthDate">Date (1–31)</label>
+        <input
+          id="monthDate"
+          type="number"
+          min="1"
+          max="31"
+          [(ngModel)]="monthDate"
+        />
+      </div>
+      <div class="col">
+        <label for="monthlyTime">Time</label>
+        <input id="monthlyTime" type="time" [(ngModel)]="monthlyTime" />
+      </div>
+    </div>
+  </div>
+
+  <div class="summary"><strong>Summary:</strong> {{ description }}</div>
+</div>
